@@ -20,29 +20,31 @@ public class index {
     //Text Color
     public static final String YELLOW = "\u001B[33m";   // YELLOW
     
+    
     public static void main(String[] args) {
         int pilihan;
-        String jawaban, masuk[][] = {{null, null, null, null, null}}, keluar[][] = {{null, null, null, null, null}}, history[][] = {{null, null, null, null, null}};
+        String jawaban, masuk[][] = {{null, null, null, null, null}}, keluar[][] = {{null, null, null, null, null}}, history[][] = {{null, null, null, null, null, null, null}};
         boolean on = true;
             
         //Input Scannser
         Scanner input = new Scanner(System.in);
         
         do{
-            System.out.println("╔══════════════════════════════╗");
+            System.out.println("╔═══════════════════════════════╗");
             System.out.println(YELLOW+"║ Sistem Informasi Keluar Masuk Barang Inventory ║");
-            System.out.println("╠══════════════════════════════╣");
+            System.out.println("╠═══════════════════════════════╣");
             System.out.println(YELLOW+"║ 1. Cek Inventory/Gudang                        ║");
             System.out.println(YELLOW+"║ 2. Barang Masuk                                ║");
             System.out.println(YELLOW+"║ 3. Barang Keluar                               ║");
             System.out.println(YELLOW+"║ 4. History                                     ║");
-            System.out.println("╚══════════════════════════════╝");
-            System.out.println("Pilih Nomor menu :");
+            System.out.println("╚═══════════════════════════════╝");
+            System.out.print("Pilih Nomor menu : ");
             pilihan = input.nextInt();
             
             if(pilihan == 1){
-                String[] headers = {"Nama", "Nomor Telp", "Hari & Tgl Booking", "Durasi Sewa/Jam", "Total Bayar", "Paket"};
-                System.out.println(AsciiTable.getTable(headers, masuk));
+                String[] headers = {"No", "Kode", "Nama Barang", "Jenis", "Jumlah", "Status", "Tanggal"};
+                System.out.print("\n");
+                System.out.println(AsciiTable.getTable(headers, history));
             } else if(pilihan == 2){
                 barangMasuk.inputMasuk(masuk, history);
             } else if(pilihan == 3){
