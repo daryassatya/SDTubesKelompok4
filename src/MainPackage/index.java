@@ -6,6 +6,7 @@
 package MainPackage;
 import com.github.freva.asciitable.AsciiTable;
 import java.util.Scanner;
+import  MainPackage.barangMasuk;
 /**
  *
  * @author USER
@@ -21,7 +22,7 @@ public class index {
     
     public static void main(String[] args) {
         int pilihan;
-        String jawaban;
+        String jawaban, masuk[][] = {{null, null, null, null, null}}, keluar[][] = {{null, null, null, null, null}}, history[][] = {{null, null, null, null, null}};
         boolean on = true;
             
         //Input Scannser
@@ -40,9 +41,10 @@ public class index {
             pilihan = input.nextInt();
             
             if(pilihan == 1){
-                
+                String[] headers = {"Nama", "Nomor Telp", "Hari & Tgl Booking", "Durasi Sewa/Jam", "Total Bayar", "Paket"};
+                System.out.println(AsciiTable.getTable(headers, masuk));
             } else if(pilihan == 2){
-            
+                barangMasuk.inputMasuk(masuk, history);
             } else if(pilihan == 3){
             
             } else if(pilihan == 4){
@@ -54,5 +56,4 @@ public class index {
         while(on == true);
         }
     }
-    
-}
+
