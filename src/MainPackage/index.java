@@ -1,4 +1,4 @@
-/*
+/*  By Dimas Aryasatya
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +7,8 @@ package MainPackage;
 import com.github.freva.asciitable.AsciiTable;
 import java.util.Scanner;
 import  MainPackage.barangMasuk;
+import  MainPackage.barangKeluar;
+import  MainPackage.historyBarang;
 /**
  *
  * @author USER
@@ -31,31 +33,47 @@ public class index {
         
         do{
             System.out.println("╔═══════════════════════════════╗");
-            System.out.println(YELLOW+"║ Sistem Informasi Keluar Masuk Barang Inventory ║");
+            System.out.println(YELLOW+"║ Sistem Informasi Keluar Masuk Barang Inventory  ║");
             System.out.println("╠═══════════════════════════════╣");
-            System.out.println(YELLOW+"║ 1. Cek Inventory/Gudang                        ║");
-            System.out.println(YELLOW+"║ 2. Barang Masuk                                ║");
-            System.out.println(YELLOW+"║ 3. Barang Keluar                               ║");
-            System.out.println(YELLOW+"║ 4. History                                     ║");
+            System.out.println(YELLOW+"║ 1. Cek Inventory/Gudang                         ║");
+            System.out.println(YELLOW+"║ 2. Barang Masuk                                 ║");
+            System.out.println(YELLOW+"║ 3. Barang Keluar                                ║");
+            System.out.println(YELLOW+"║ 4. History                                      ║");
+            System.out.println(YELLOW+"║ 5. Keluar                                       ║");
             System.out.println("╚═══════════════════════════════╝");
             System.out.print("Pilih Nomor menu : ");
             pilihan = input.nextInt();
             
             if(pilihan == 1){
-                String[] headers = {"No", "Kode", "Nama Barang", "Jenis", "Jumlah", "Status", "Tanggal"};
-                System.out.print("\n");
-                System.out.println(AsciiTable.getTable(headers, history));
+                
             } else if(pilihan == 2){
                 barangMasuk.inputMasuk(masuk, history);
             } else if(pilihan == 3){
-            
+                barangKeluar.inputKeluar(keluar, history);
             } else if(pilihan == 4){
-            
-            }else{
-            
+                System.out.println("╔═══════════════════════════════╗");
+                System.out.println(YELLOW+"║                      HISTORY                    ║");
+                System.out.println("╠═══════════════════════════════╣");
+                System.out.println(YELLOW+"║ 1. Semua History                                ║");
+                System.out.println(YELLOW+"║ 2. Masuk History                                ║");
+                System.out.println(YELLOW+"║ 3. Keluar                                       ║");
+                System.out.println(YELLOW+"║ 4. Kembali                                      ║");
+                System.out.println("╚═══════════════════════════════╝");
+                System.out.print("Pilih Nomor menu : ");
+                pilihan = input.nextInt();
+                if(pilihan == 1){
+                    historyBarang.semuaHistory(history);
+                } else if(pilihan == 2){
+                    historyBarang.masukHistory(history);
+                } else if(pilihan == 3){
+                    historyBarang.keluarHistory(history);
+                } else {
+                    System.out.println("Tidak ada menu seperti itu!");
+                }
+            } else {
+                on = false;
             }
         }
         while(on == true);
         }
     }
-
