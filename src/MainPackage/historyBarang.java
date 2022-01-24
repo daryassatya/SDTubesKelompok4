@@ -79,7 +79,32 @@ public class historyBarang {
         } else {
             System.out.println(GREEN+"Tidak Ada History Barang Keluar!");
         }
-        
+    }
+    
+    public static void inventory(String history[][]){
+        String reArray[][] = {{"sd", null, null, null, null, null, null}};
+         for(int i=0; i<history.length; i++){
+            if(reArray[i][0] != null){
+                reArray[i][1] = history[i][1]; 
+                reArray[i][1] = history[i][1]; 
+                reArray[i][1] = history[i][1]; 
+                reArray[i][2] = history[i][2];
+                reArray[i][3] = history[i][3];
+                reArray[i][4] += history[i][4];
+                reArray[i][5] = history[i][5];
+                reArray[i][6] = history[i][6];
+            
+            }
+            reArray[i][0] = history[i][0]; 
+            reArray[i][1] = history[i][1];
+            reArray[i][2] = history[i][2];
+            reArray[i][3] = history[i][3];
+            reArray[i][4] = history[i][4];
+            reArray[i][5] = history[i][5];
+            reArray[i][6] = history[i][6];
+            
+            
+        }
         
     }
 }
