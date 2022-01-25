@@ -82,39 +82,38 @@ public class historyBarang {
         }
     }
     
-    public static void inventory(String history[][]){
-        String reArray[][] = {{null, null, null, null, null, null, null}};
+    public static void inventory(String inventory[][]){
         
-        if(history[0][0] != null){
-            for(int i=0; i<history.length; i++){
-                System.out.println(GREEN+reArray[0][0]);
-                if(history[i][5].equalsIgnoreCase("Masuk")){
-                        reArray[0][0] = String.valueOf(1);
-                        reArray[0][1] = history[i][1];
-                        reArray[0][2] = history[i][2];
-                        reArray[0][3] = history[i][3];
-                        reArray[0][4] = history[i][4];
-                        reArray[0][5] = history[i][5];
-                        reArray[0][6] = history[i][6]; 
-                } else if(history[i][5].equalsIgnoreCase("Masuk")){
-                        for(int a=0; a<reArray.length; a++){
-                            if(reArray[a][1].equalsIgnoreCase(history[i][1])){
-                                reArray[a][4] += history[i][4];
-                                System.out.println(GREEN+"Ada yang sama!");
-                            
-                            }
-                        }
-                    }
-            }
-            if(reArray.length > 0){
-                String[] headers = {"No", "Kode", "Nama Barang", "Jenis", "Jumlah", "Status", "Tanggal"};
+        
+//        if(history[0][0] != null){
+//            for(int a=0; a<reArray.length; a++){
+//                System.out.println(GREEN+reArray[0][0]);
+//                
+//                for(int i=0; i<history.length; i++){
+//                    if(history[i][5].equalsIgnoreCase("Masuk")){
+//                        if(reArray[a][1].equalsIgnoreCase(history[i][1])){
+//                            reArray[a][4] += history[i][4];
+//                            System.out.println(GREEN+"Ada yang sama!");
+//                                
+//                        } 
+//                        
+//                        if(reArray[a][0] == null){
+//                            a-=1;1
+//                                    
+//                        }
+//                    }
+//                }
+//            }
+//            
+            if(inventory[0][0] != null){
+                String[] headers = {"No", "Kode", "Nama Barang", "Jenis", "Jumlah", "Tanggal"};
                 System.out.print("\n");
-                System.out.println(AsciiTable.getTable(headers, reArray));
+                System.out.println(AsciiTable.getTable(headers, inventory));
             }else {
                 System.out.println(GREEN+"Tidak Ada Barang di Inventory!");
             }
-        } else {
-            System.out.println(GREEN+"Tidak Ada Barang di Inventory!");
-        }
+//        } else {
+//            System.out.println(GREEN+"Tidak Ada Barang di Inventory!");
+//        }
     }
 }

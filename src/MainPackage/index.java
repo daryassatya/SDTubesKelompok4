@@ -25,7 +25,7 @@ public class index {
     
     public static void main(String[] args) {
         int pilihan;
-        String jawaban, masuk[][] = {{null, null, null, null, null}}, keluar[][] = {{null, null, null, null, null}}, history[][] = {{null, null, null, null, null, null, null}};
+        String inventory[][] = {{null, null, null, null, null, null, null}}, history[][] = {{null, null, null, null, null, null, null}};
         boolean on = true;
             
         //Input Scannser
@@ -45,11 +45,11 @@ public class index {
             pilihan = input.nextInt();
             
             if(pilihan == 1){
-                historyBarang.inventory(history);
+                historyBarang.inventory(inventory);
             } else if(pilihan == 2){
-                barangMasuk.inputMasuk(masuk, history);
+                barangMasuk.inputMasuk(inventory, history);
             } else if(pilihan == 3){
-                barangKeluar.inputKeluar(keluar, history);
+                barangKeluar.inputKeluar(inventory, history);
             } else if(pilihan == 4){
                 System.out.println("╔═══════════════════════════════╗");
                 System.out.println(YELLOW+"║                      HISTORY                    ║");

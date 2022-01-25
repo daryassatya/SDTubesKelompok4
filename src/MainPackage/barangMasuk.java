@@ -17,45 +17,66 @@ public class barangMasuk {
     public static final String YELLOW = "\u001B[33m";   // YELLOW
     public static final String GREEN = "\033[0;32m";   // GREEN
     
-    public static void inputMasuk(String masuk[][], String history[][]){
+    public static void inputMasuk(String inventory[][], String history[][]){
         String jawaban, kode, nama, jenis, jumlah;
         //Input Scannser
         Scanner input = new Scanner(System.in);
+        
+        //Get DateTime NOW
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+        LocalDateTime now = LocalDateTime.now(); 
        
-        if(masuk.length > 0){
-            for(int i=0; i < masuk.length; i++){
-                masuk[i][0] = String.valueOf(i+1);
+        if(inventory[0][0] != null){
+            for(int i=0; i < 100; i++){
+                inventory[i][0] = String.valueOf(i+1);
                 System.out.print("Masukkan Kode Barang : ");
                 kode = input.nextLine();
-                masuk[i][1] = kode;
+                inventory[i][1] = kode;
                 System.out.print("Masukkan Nama Barang : ");
                 nama = input.nextLine();
-                masuk[i][2] = nama;
+                inventory[i][2] = nama;
                 System.out.print("Masukkan Jenis Barang : ");
                 jenis = input.nextLine();
-                masuk[i][3] = jenis;
+                inventory[i][3] = jenis;
                 System.out.print("Masukkan Jumlah Barang : ");
                 jumlah = input.nextLine();
-                masuk[i][4] = jumlah;
+                inventory[i][4] = jumlah;
+                inventory[i][5] = dtf.format(now);
                 saveHistory(history, kode, nama, jenis, jumlah);
+                
+                if(history[0][0] != null){
+                    for(int a=0; a < history.length; a++){
+                        if(history[a][1].equalsIgnoreCase(kode)){
+                            inventory[i][4] += history[a][5];
+                        }
+                    }
                 }
+            }
             System.out.print("\n");
         } else {
-            masuk[0][0] = String.valueOf(1);
+            inventory[0][0] = String.valueOf(1);
             System.out.print("Masukkan Kode Barang : ");
-            input.nextLine();
             kode = input.nextLine();
-            masuk[0][1] = kode;
+            inventory[0][1] = kode;
             System.out.print("Masukkan Nama Barang : ");
             nama = input.nextLine();
-            masuk[0][2] = nama;
+            inventory[0][2] = nama;
             System.out.print("Masukkan Jenis Barang : ");
             jenis = input.nextLine();
-            masuk[0][3] = jenis;
+            inventory[0][3] = jenis;
             System.out.print("Masukkan Jumlah Barang : ");
             jumlah = input.nextLine();
-            masuk[0][4] = jumlah;
-            saveHistory(history, kode, nama, jenis, jumlah);
+            inventory[0][4] = jumlah;
+            inventory[0][5] = dtf.format(now);
+                saveHistory(history, kode, nama, jenis, jumlah);
+                
+                if(history[0][0] != null){
+                    for(int a=0; a < history.length; a++){
+                        if(history[a][1].equalsIgnoreCase(kode)){
+                            inventory[0][4] += history[a][5];
+                        }
+                    }
+                }
         }
         System.out.println(GREEN+"Berhasil Menyimpan !");
         System.out.print("\n");
