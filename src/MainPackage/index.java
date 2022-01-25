@@ -45,7 +45,7 @@ public class index {
             pilihan = input.nextInt();
             
             if(pilihan == 1){
-                
+                historyBarang.inventory(history);
             } else if(pilihan == 2){
                 barangMasuk.inputMasuk(masuk, history);
             } else if(pilihan == 3){

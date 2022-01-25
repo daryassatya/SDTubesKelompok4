@@ -6,6 +6,7 @@
 package MainPackage;
 
 import com.github.freva.asciitable.AsciiTable;
+import java.util.Arrays;
 
 /**
  *
@@ -82,29 +83,38 @@ public class historyBarang {
     }
     
     public static void inventory(String history[][]){
-        String reArray[][] = {{"sd", null, null, null, null, null, null}};
-         for(int i=0; i<history.length; i++){
-            if(reArray[i][0] != null){
-                reArray[i][1] = history[i][1]; 
-                reArray[i][1] = history[i][1]; 
-                reArray[i][1] = history[i][1]; 
-                reArray[i][2] = history[i][2];
-                reArray[i][3] = history[i][3];
-                reArray[i][4] += history[i][4];
-                reArray[i][5] = history[i][5];
-                reArray[i][6] = history[i][6];
-            
-            }
-            reArray[i][0] = history[i][0]; 
-            reArray[i][1] = history[i][1];
-            reArray[i][2] = history[i][2];
-            reArray[i][3] = history[i][3];
-            reArray[i][4] = history[i][4];
-            reArray[i][5] = history[i][5];
-            reArray[i][6] = history[i][6];
-            
-            
-        }
+        String reArray[][] = {{null, null, null, null, null, null, null}};
         
+        if(history[0][0] != null){
+            for(int i=0; i<history.length; i++){
+                System.out.println(GREEN+reArray[0][0]);
+                if(history[i][5].equalsIgnoreCase("Masuk")){
+                        reArray[0][0] = String.valueOf(1);
+                        reArray[0][1] = history[i][1];
+                        reArray[0][2] = history[i][2];
+                        reArray[0][3] = history[i][3];
+                        reArray[0][4] = history[i][4];
+                        reArray[0][5] = history[i][5];
+                        reArray[0][6] = history[i][6]; 
+                } else if(history[i][5].equalsIgnoreCase("Masuk")){
+                        for(int a=0; a<reArray.length; a++){
+                            if(reArray[a][1].equalsIgnoreCase(history[i][1])){
+                                reArray[a][4] += history[i][4];
+                                System.out.println(GREEN+"Ada yang sama!");
+                            
+                            }
+                        }
+                    }
+            }
+            if(reArray.length > 0){
+                String[] headers = {"No", "Kode", "Nama Barang", "Jenis", "Jumlah", "Status", "Tanggal"};
+                System.out.print("\n");
+                System.out.println(AsciiTable.getTable(headers, reArray));
+            }else {
+                System.out.println(GREEN+"Tidak Ada Barang di Inventory!");
+            }
+        } else {
+            System.out.println(GREEN+"Tidak Ada Barang di Inventory!");
+        }
     }
 }
