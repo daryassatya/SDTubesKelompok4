@@ -22,6 +22,7 @@ public class barangMasuk {
         String jawaban, kode, nama, jenis, jumlah;
         //Input Scannser
         Scanner input = new Scanner(System.in);
+        boolean pencarianKode = false;
         
         //Get DateTime NOW
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
@@ -61,10 +62,9 @@ public class barangMasuk {
                                         System.out.print("Masukkan Jumlah Barang : ");
                                         jumlah = input.nextLine();
                                         inventory[posisiArrayHistory][4] = String.valueOf(Integer.valueOf(jumlah)+jumlahHistory);
-                                    }else{
+                                        pencarianKode = true;
+                                    }else if(pencarianKode == false){
                                         inventory[i][0] = String.valueOf(i+1);
-                                        System.out.print("Masukkan Kode Barang : ");
-                                        kode = input.nextLine();
                                         inventory[i][1] = kode;
                                         System.out.print("Masukkan Nama Barang : ");
                                         nama = input.nextLine();
@@ -83,19 +83,7 @@ public class barangMasuk {
                                 } catch(NumberFormatException e){
                                     int getKodeHistory = 0;
                                     int getKodeInput = 0;
-                                }
-                                
-                                
-//                                    a = history.length;
-//                                    inventory[i][4] = String.valueOf(parseInt(inventory[i][4])+parseInt(history[a][4])); 
-//                                    if(history.length == a){
-//                                        System.out.print("Masukkan Jumlah Barang : ");
-//                                        jumlah = input.nextLine();
-//                                        inventory[i][4] = String.valueOf(2);
-//                                        saveHistory(history, inventory[i][1], inventory[i][2], inventory[i][3], inventory[i][4]);
-//                                    }
-//                                } else {
-////                                    
+                                }   
                             }
                         i=100;
                         }
@@ -133,7 +121,7 @@ public class barangMasuk {
                     history[a][5] = "Masuk";
                     history[a][6] = dtf.format(now);
                     history[a][7] = String.valueOf(posisiArray);
-                    a = 5;
+                    a = 100;
                 }
             }
         }
