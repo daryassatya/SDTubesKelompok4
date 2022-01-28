@@ -25,7 +25,7 @@ public class index {
     
     public static void main(String[] args) {
         int pilihan;
-        String inventory[][] = {{null, null, null, null, null, null, null}}, history[][] = {{null, null, null, null, null, null, null}};
+        String inventory[][] = new String[100][6], history[][] = new String[100][8];
         boolean on = true;
             
         //Input Scannser
