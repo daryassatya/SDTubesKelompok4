@@ -45,15 +45,16 @@ public class historyBarang {
     
     public static void masukHistory(String[][] history){
         int getLength = 0;
-        for(int i = 0; i<history.length; i++ ){
-            if(history[i][5].equalsIgnoreCase("Masuk")){
+        for(int i = 0; i<history.length; i++ ){         
+            if(history[i][5] == "Masuk"){
                 getLength +=1; 
             }
         }
+//        System.out.println(getLength);
         String reArray[][] = new String[getLength][7];
         if(history[0][0] != null){
             for(int i = 0; i<history.length; i++ ){
-                if(history[i][5].equalsIgnoreCase("Masuk")){
+                if(history[i][5] == "Masuk"){
                    reArray[i][0] = String.valueOf(i+1);
                    reArray[i][1] = history[i][1];
                    reArray[i][2] = history[i][2];
@@ -74,14 +75,14 @@ public class historyBarang {
     public static void keluarHistory(String[][] history){
           int getLength = 0;
         for(int i = 0; i<history.length; i++ ){
-            if(history[i][5].equalsIgnoreCase("Keluar")){
+            if(history[i][5] == "Keluar"){
                 getLength +=1; 
             }
         }
         String reArray[][] = new String[getLength][7];
         if(history[0][0] != null){
             for(int i = 0; i<history.length; i++ ){
-                if(history[i][5].equalsIgnoreCase("Keluar")){
+                if(history[i][5] == "Keluar"){
                    reArray[i][0] = String.valueOf(i+1);
                    reArray[i][1] = history[i][1];
                    reArray[i][2] = history[i][2];

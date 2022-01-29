@@ -61,8 +61,8 @@ public class barangKeluar {
                                         System.out.print("Masukkan Jumlah Barang : ");
                                         jumlah = input.nextLine();
                                         sumTotal += Integer.valueOf(history[a][4]);
-//                                        System.out.println(posisiArrayHistory);
                                         inventory[posisiArrayHistory][4] = String.valueOf(jumlahInventory-Integer.valueOf(jumlah));
+                                        saveHistory(history, kode, inventory[posisiArrayHistory][2], inventory[posisiArrayHistory][3], inventory[posisiArrayHistory][4], posisiArrayHistory);
                                         pencarianKode = true;
                                     }else if(pencarianKode == false){
                                         inventory[i][0] = String.valueOf(i+1);

@@ -48,11 +48,15 @@ public class barangMasuk {
                     int posisiArray = 0;
                     saveHistory(history, kode, nama, jenis, jumlah, posisiArray);
                 }else{
-                    for(int i=0; i < 100; i++){
-                        if(inventory[i][0] == null && inventory[i][1] == null){
-                            System.out.print("Masukkan Kode Barang : ");
-                            kode = input.nextLine();
+                    
                             try{
+                                System.out.print("Masukkan Kode Barang : ");
+                    kode = input.nextLine();
+                    for(int i=0; i < 100; i++){
+                        if(i==3){
+                            System.out.println("Loopingan ke: "+i);
+                                    }
+                        if(inventory[i][0] == null && inventory[i][1] == null){
                                 for(int a=0; a < history.length; a++){
                                     int getKodeHistory = Integer.valueOf(history[a][1]);
                                     int getKodeInput = Integer.valueOf(kode);
@@ -62,9 +66,10 @@ public class barangMasuk {
                                         System.out.print("Masukkan Jumlah Barang : ");
                                         jumlah = input.nextLine();
                                         sumTotal += Integer.valueOf(history[a][4]);
-//                                        System.out.println(posisiArrayHistory);
                                         inventory[posisiArrayHistory][4] = String.valueOf(Integer.valueOf(jumlah)+jumlahInventory);
+//                                        saveHistory(history, kode, inventory[posisiArrayHistory][2], inventory[posisiArrayHistory][3], inventory[posisiArrayHistory][4], posisiArrayHistory);
                                         pencarianKode = true;
+                                        a=100;
                                     }else if(pencarianKode == false){
                                         inventory[i][0] = String.valueOf(i+1);
                                         inventory[i][1] = kode;
@@ -81,17 +86,17 @@ public class barangMasuk {
                                         int posisiArray = i;
                                         saveHistory(history, kode, nama, jenis, jumlah, posisiArray);
                                         a = history.length;
+                                                                        i=100;
                                     }
                                 }
+                        }
+                    }
                             } catch(NumberFormatException e){
                                 int getKodeHistory = 0;
                                 int getKodeInput = 0;
                             }
-                        i=100;
-                        }
-                    }
-                }
-//        System.out.println(GREEN+sumTotal);               
+                        
+                }            
         System.out.println(GREEN+"Perbahan Berhasil disimpan !");
         System.out.print("\n");
     }
