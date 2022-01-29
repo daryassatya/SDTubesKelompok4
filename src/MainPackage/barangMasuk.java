@@ -20,6 +20,7 @@ public class barangMasuk {
     
     public static void inputMasuk(String inventory[][], String history[][]){
         String jawaban, kode, nama, jenis, jumlah;
+        int sumTotal=0;
         //Input Scannser
         Scanner input = new Scanner(System.in);
         boolean pencarianKode = false;
@@ -51,17 +52,18 @@ public class barangMasuk {
                         if(inventory[i][0] == null && inventory[i][1] == null){
                             System.out.print("Masukkan Kode Barang : ");
                             kode = input.nextLine();
-                            for(int a=0; a < history.length; a++){
-                                try{
+                            try{
+                                for(int a=0; a < history.length; a++){
                                     int getKodeHistory = Integer.valueOf(history[a][1]);
                                     int getKodeInput = Integer.valueOf(kode);
-                                    int jumlahHistory = Integer.valueOf(history[a][4]);
                                     int posisiArrayHistory = Integer.valueOf(history[a][7]);
+                                    int jumlahInventory = Integer.valueOf(inventory[posisiArrayHistory][4]);
                                     if(getKodeInput == getKodeHistory){
-                                        System.out.print(i);
                                         System.out.print("Masukkan Jumlah Barang : ");
                                         jumlah = input.nextLine();
-                                        inventory[posisiArrayHistory][4] = String.valueOf(Integer.valueOf(jumlah)+jumlahHistory);
+                                        sumTotal += Integer.valueOf(history[a][4]);
+//                                        System.out.println(posisiArrayHistory);
+                                        inventory[posisiArrayHistory][4] = String.valueOf(Integer.valueOf(jumlah)+jumlahInventory);
                                         pencarianKode = true;
                                     }else if(pencarianKode == false){
                                         inventory[i][0] = String.valueOf(i+1);
@@ -80,17 +82,17 @@ public class barangMasuk {
                                         saveHistory(history, kode, nama, jenis, jumlah, posisiArray);
                                         a = history.length;
                                     }
-                                } catch(NumberFormatException e){
-                                    int getKodeHistory = 0;
-                                    int getKodeInput = 0;
-                                }   
+                                }
+                            } catch(NumberFormatException e){
+                                int getKodeHistory = 0;
+                                int getKodeInput = 0;
                             }
                         i=100;
                         }
                     }
                 }
-                        
-        System.out.println(GREEN+"Berhasil Menyimpan !");
+//        System.out.println(GREEN+sumTotal);               
+        System.out.println(GREEN+"Perbahan Berhasil disimpan !");
         System.out.print("\n");
     }
 
